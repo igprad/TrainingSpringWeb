@@ -7,16 +7,20 @@ and open the template in the editor.
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>User Home</title>
-        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <div>This is user's home</div>
-        <p th:text="'content: ' + ${message}"/>
-        <br/>
-        <form action="/">
-            <input type="submit" value="Back"/>
-        </form>
+        <div class="jumbotron">
+            <div class="context text-center">
+                <div>This is parsing's home</div>
+                <p th:text="'content: ' + ${message}"/>
+                <br/>
+                <form action="/">
+                    <input type="submit" value="Back"/>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

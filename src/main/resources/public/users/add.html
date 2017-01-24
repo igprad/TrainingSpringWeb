@@ -15,9 +15,10 @@ and open the template in the editor.
         <div class="jumbotron">
             <div class="container text-center">
                 <h2>Add new user</h2>
-                <form action="users/add" method="POST">
-                    Masukkan Username   : <input type="text"/><br/><br/>
-                    Masukkan Email      : <input type="text"/><br/><br/>
+                <form action="/add/input" method="POST">
+                    Masukkan Username   : <input type="text" name="username"/><br/><br/>
+                    Masukkan Password      : <input type="text" name="password"/><br/><br/>
+                    Masukkan Email      : <input type="text" name="email"/><br/><br/>
                     <input type="submit" value="Tambah" class="btn btn-warning"/>
                 </form>
             </div>
