@@ -18,6 +18,6 @@ public class IndexController {
     
     @RequestMapping("/")
     public String home(Model model){
-        return "public/index";
+        return "index";
     }
 }
