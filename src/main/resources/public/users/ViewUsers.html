@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>User Tampil</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container text-center">
+                 <h2>Data Users</h2>
+               <table  width="200" style="margin-left:auto;margin-right:auto">
+                    <tbody>
+                        <tr th:each="person : ${dataUsers}">
+                            <td th:each="entry : ${person}" 
+                                th:text="${entry}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <form action="/">
+                    <input type="submit" value="Back"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
