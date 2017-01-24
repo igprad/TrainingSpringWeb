@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String id;
 
     private String username;
@@ -28,6 +28,14 @@ public class User {
     private String password;
 
     private String email;
+
+    public User(){}
+    
+    public User(String username, String password, String email) {
+        this.username=username;
+        this.password=password;
+        this.email=email;
+    }
 
     public String getId() {
         return id;
