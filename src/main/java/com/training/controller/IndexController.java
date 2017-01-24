@@ -33,7 +33,7 @@ public class IndexController {
         return "users/index";
     }
     
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/add", method = RequestMethod.GET)
     public String inputName(
     ) {
         return "users/add";
