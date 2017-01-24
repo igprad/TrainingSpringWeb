@@ -11,8 +11,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -23,16 +25,21 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
     
-    @RequestMapping(value = "/users/add", method = RequestMethod.POST)
-    public String addUser(Model model){
-//        List<User> data = userRepository.findAll();
-//        model.addAttribute("dataUsers",data);
-        return "users/add";
+    @RequestMapping(value = "/add/input", method = RequestMethod.POST)
+    public String addUser(
+//            @RequestParam(value="username") String username,
+//            @RequestParam(value="password") String password,
+//            @RequestParam(value="email") String email,
+            @ModelAttribute User user,
+            Model model){
+//        userRepository.save(new User(username,password,email));
+        userRepository.save(user);
+        return "index";
     }        
     @RequestMapping(value = "/users/view", method = RequestMethod.GET)
     public String getUsers(Model model){
         List<User> data = userRepository.findAll();
         model.addAttribute("dataUsers",data);
         return "users/ViewUsers";
-    }        
+    }           
 }
