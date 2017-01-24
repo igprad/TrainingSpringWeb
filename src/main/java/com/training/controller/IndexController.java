@@ -26,7 +26,7 @@ public class IndexController {
         return "index";
     }
     
-    @RequestMapping(value="/input",method = RequestMethod.GET)
+    @RequestMapping(value="/input",method = RequestMethod.POST)
     public String inputName(
             @RequestParam(value="data") String data,Model model
     ){

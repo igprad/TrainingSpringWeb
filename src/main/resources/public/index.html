@@ -9,15 +9,44 @@ and open the template in the editor.
         <title>WebSpring-HomePage</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
     <body>
-        <div>This is Homepage</div>
-        <div>
-            Please insert your name :
-            <form action="/input" method="GET">
-                <input type="text" name="data"/>
-                <input type="submit"/>
-            </form>
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h2 >This is Homepage - Training Spring Web</h2>
+                <br/>
+                <br/>
+                <h3>1.) This is for testing paramater</h3>
+                <br/>
+                <div>
+                    Please insert your name :
+                    <form action="/input" method="POST">
+                        <input type="text" name="data"/>
+                        <input type="submit" class="btn btn-primary"/>
+                    </form>
+                </div>
+                <br/>
+                <br/>
+                <h3>2.) This for testing CRUD</h3>
+                <br/>
+                <div>
+                    <table  width="200" style="margin-left:auto;margin-right:auto">
+                        <tr>
+                            <td class="btn btn-primary">Create</td>
+                        </tr>
+                        <tr>
+                            <td class="btn btn-primary">Update</td>
+                        </tr>
+                        <tr>
+                            <td class="btn btn-primary">Delete</td>
+                        </tr>
+                        <tr>
+                            <td class="btn btn-primary">Select</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </body>
 </html>
