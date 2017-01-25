@@ -21,4 +21,5 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
             @Param("username")String username,
             @Param("password")String password
     );
+    
 }

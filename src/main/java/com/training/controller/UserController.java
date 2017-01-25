@@ -35,7 +35,7 @@ public class UserController {
             Model model) {
 //        userRepository.save(new User(username,password,email));
         userRepository.save(user);
-        return "index";
+        return "users/ViewUsers";
     }
 
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)

@@ -13,65 +13,48 @@ and open the template in the editor.
     </head>
     <body>
         <div class="jumbotron">
-            <div class="container text-center">
-                <h2 >This is Homepage - Training Spring Web</h2>
-                <br/>
-                <br/>
-                <h3>1.) This is for testing paramater</h3>
-                <br/>
-                <div>
-                    Please insert your name :
-                    <form action="/input" method="POST">
-                        <input type="text" name="data"/>
-                        <input type="submit" class="btn btn-primary"/>
-                    </form>
+            <div class="container text-center" style="height: 550px;">
+                <div class="col-xs-12">
+                    <h2 >This is Homepage - Training Spring Web</h2>
+                    <br/>
+                    <br/>
                 </div>
-                <br/>
-                <br/>
-                <h3>2.) This for testing CRUD</h3>
-                <br/>
-                <div>
+                <div class="col-xs-4">
+                    <h3>This is for testing paramater</h3>
+                    <br/>
+                    <div>
+                        Please insert your name :
+                        <form action="/input" method="POST">
+                            <input type="text" name="data"/>
+                            <input type="submit" class="btn btn-primary"/>
+                        </form>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+
+                <div class="col-xs-4">
+                    <h3>This for testing CRUD</h3>
+                    <br/>
                     <table  width="200" style="margin-left:auto;margin-right:auto">
-                        <tr>
-                            <td class="btn btn-primary">
-                                <a href="/users/add" style="color:white" >Create</a></td>
-                        </tr>
-                        <tr>
-                            <td class="btn btn-primary">Update</td>
-                        </tr>
-                        <tr>
-                            <td class="btn btn-primary">Delete</td>
-                        </tr>
                         <tr>
                             <td class="btn btn-primary">
                                 <a href="/users/view" style="color:white" >View Users</a></td>
                         </tr>
+                        
                     </table>
                     <br/>
                     <br/>
-                    <h3>3.) Login</h3>
-                    <form action="/users/login" method="POST">
-                        <table  width="200" style="margin-left:auto;margin-right:auto">
-                            <tr>
-                                <td><p>Username : </p>
-                                    <input type="text" name="username"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <br/>
-                            </tr>
-                            <tr>
-                                <td><p>Password : </p>
-                                    <input type="text" name="password"/></td>
-                            </tr>
-                            <tr>
-                                <br/>
-                            </tr>
-                            <tr>
-                                <td><input class="btn btn-primary" type="submit"/></td>
-                            </tr>
+                </div>
 
-                        </table>
+                <div class="col-xs-4">
+                    <h3>This is for test Login</h3>
+                    <form action="/users/login" method="POST"><br/>
+                        Username :
+                        <input type="text" name="username"/><br/><br/>
+                        Password : 
+                        <input type="text" name="password"/><br/><br/>
+                        <input class="btn btn-primary" type="submit"/>
                     </form>
                 </div>
             </div>
