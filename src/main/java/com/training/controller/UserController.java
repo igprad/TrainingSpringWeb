@@ -22,24 +22,39 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class UserController {
+
     @Autowired
     UserRepository userRepository;
-    
+
     @RequestMapping(value = "/add/input", method = RequestMethod.POST)
     public String addUser(
-//            @RequestParam(value="username") String username,
-//            @RequestParam(value="password") String password,
-//            @RequestParam(value="email") String email,
+            //            @RequestParam(value="username") String username,
+            //            @RequestParam(value="password") String password,
+            //            @RequestParam(value="email") String email,
             @ModelAttribute User user,
-            Model model){
+            Model model) {
 //        userRepository.save(new User(username,password,email));
         userRepository.save(user);
         return "index";
-    }        
+    }
+
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    public String login(
+                        @RequestParam(value="username") String username,
+                        @RequestParam(value="password") String password,
+            Model model) {
+        User result = userRepository.authLogin(username,password);
+        if(result==null)
+            model.addAttribute("Message","Login failed");
+        else
+            model.addAttribute("Message","Loggin success");
+        return "users/LoginAuth";
+    }
+
     @RequestMapping(value = "/users/view", method = RequestMethod.GET)
-    public String getUsers(Model model){
+    public String getUsers(Model model) {
         List<User> data = userRepository.findAll();
-        model.addAttribute("dataUsers",data);
+        model.addAttribute("dataUsers", data);
         return "users/ViewUsers";
-    }           
+    }
 }
