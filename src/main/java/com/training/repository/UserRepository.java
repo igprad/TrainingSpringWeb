@@ -8,11 +8,17 @@ package com.training.repository;
 import com.training.model.User;
 import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
  * @author ALz
  */
 public interface UserRepository extends JpaRepository<User, Serializable>{
-    
+    @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username) and u.password = :password")
+    public User authLogin(
+            @Param("username")String username,
+            @Param("password")String password
+    );
 }
