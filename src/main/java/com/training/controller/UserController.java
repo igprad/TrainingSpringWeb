@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -27,15 +28,16 @@ public class UserController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/add/input", method = RequestMethod.POST)
-    public String addUser(
+    public ModelAndView addUser(
             //            @RequestParam(value="username") String username,
             //            @RequestParam(value="password") String password,
             //            @RequestParam(value="email") String email,
             @ModelAttribute User user,
+            
             Model model) {
 //        userRepository.save(new User(username,password,email));
         userRepository.save(user);
-        return "users/ViewUsers";
+        return new ModelAndView("redirect:/users/view");
     }
 
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
