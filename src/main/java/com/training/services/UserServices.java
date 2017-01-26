@@ -42,7 +42,7 @@ public class UserServices{
     
     public List<User>seeAllUsers(){
         List<User> result;
-        result = userRepository.findAll();
+        result=userRepository.findAllByOrderByIdDesc();
         return result;
     }
     

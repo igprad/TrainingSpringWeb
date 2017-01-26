@@ -35,6 +35,9 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
     public List<User> 
         findByUsernameOrPasswordOrEmailContaining(String keyword,String keyword2,String keyword3);
     
+    public List<User>
+        findAllByOrderByIdDesc();
+        
     @Transactional
     @Modifying
     @Query("UPDATE User u"
