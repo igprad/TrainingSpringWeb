@@ -11,20 +11,19 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
-    <body>
-        <div class="jumbotron">
+    <body class="jumbotron">
+        <div class="jumbotron" style="margin-top: -50px;">
             <div class="container">
                 <h2>Data Users</h2>
-                <br/>
-                <br/>
-                <div class="col-sm-3">
-                    <form action="/index">
-                        <input class="btn btn-warning" type="submit" value="Back"/>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                <div class="col-sm-1">
+                    <form action="/users/add" method="GET">
+                        <input type="submit" value="Create" class="btn btn-primary"/>
                     </form>
                 </div>
-                <div class="col-xs-9 text-right">
-                    <form action="#" method="POST">
-                        Cari : <input type="text" name="searchUsers"/>
+                <div class="col-xs-11 text-right">
+                    <form action="/users/search" method="GET">
+                        Cari : <input type="text" name="search"/>
                         <input class="btn btn-primary" type="submit" value="Cari"/>
                     </form>
                 </div>
@@ -72,10 +71,11 @@ and open the template in the editor.
                         </tr>
                     </tbody>
                 </table>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 <br/>
-                <div class="col-sm-1">
-                    <form action="/users/add" method="GET">
-                        <input type="submit" value="Create" class="btn btn-primary"/>
+                  <div class="col-sm-3">
+                    <form action="/index">
+                        <input class="btn btn-warning" type="submit" value="Back"/>
                     </form>
                 </div>
             </div>

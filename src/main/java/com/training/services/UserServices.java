@@ -46,4 +46,9 @@ public class UserServices{
         return result;
     }
     
+    public List<User>seeUsersByKeyword(String keyword,String keyword2,String keyword3){
+//        List<User> result = userRepository.searchByKeyword(keyword);
+        List<User> result = userRepository.findByUsernameOrPasswordOrEmailContaining(keyword, keyword2, keyword3);
+        return result;
+    }
 }

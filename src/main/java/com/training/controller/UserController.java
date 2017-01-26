@@ -65,6 +65,16 @@ public class UserController {
         model.addAttribute("dataUsers", data);
         return ("users/ViewUsers");
     }
+    @RequestMapping(value = "/users/search", method = RequestMethod.GET)
+    public String getUsersByKeywords(
+            @RequestParam(value="search")String keyword,
+            @RequestParam(value="search")String keyword2,
+            @RequestParam(value="search")String keyword3,
+            Model model) {
+        List<User> data = userService.seeUsersByKeyword(keyword, keyword2, keyword3);
+        model.addAttribute("dataUsers", data);
+        return ("users/ViewUsers");
+    }
     
     @RequestMapping(value="/users/updateUser" ,method=RequestMethod.POST)
     public String getUpdatePage( 

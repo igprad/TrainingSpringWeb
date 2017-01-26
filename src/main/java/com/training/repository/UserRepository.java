@@ -7,6 +7,7 @@ package com.training.repository;
 
 import com.training.model.User;
 import java.io.Serializable;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +25,16 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
             @Param("password")String password
     );
     
+//    @Query(value="SELECT u FROM User u WHERE "
+//            + "u.id::TEXT LIKE '%:keyword%' or "
+//            + "u.username::TEXT LIKE '%:keyword%' or "
+//            + "u.password::TEXT LIKE '%:keyword%' or "
+//            + "u.email::TEXT LIKE '%:keyword%' ",nativeQuery = true)
+//    public List<User> searchByKeyword(@Param("keyword")String keyword);
+    
+    public List<User> 
+        findByUsernameOrPasswordOrEmailContaining(String keyword,String keyword2,String keyword3);
+    
     @Transactional
     @Modifying
     @Query("UPDATE User u"
@@ -37,5 +48,6 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
             @Param("password")String password,
             @Param("email")String email
     );
+    
     
 }
