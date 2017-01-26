@@ -23,15 +23,15 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
     );
     
     @Query("UPDATE User u"
-            + " set u.username=:username,"
-            + " u.password=:password,"
-            + " u.email=:email "
-            + " where u.id=:id;")
+            + " set u.username= :username,"
+            + " u.password= :password,"
+            + " u.email= :email "
+            + " where u.id = :id")
     public void updateUserByID(
             @Param("id")String id,
-            @Param("id")String username,
-            @Param("id")String password,
-            @Param("id")String email
+            @Param("username")String username,
+            @Param("password")String password,
+            @Param("email")String email
     );
     
 }

@@ -28,7 +28,7 @@ public class UserServices{
     public void update(String id, String username, String password,String email){
         userRepository.updateUserByID(id, username, password, email);
     }
-    public void delete(String id){
+    public void delete(Integer id){
         userRepository.delete(id);
     }
     

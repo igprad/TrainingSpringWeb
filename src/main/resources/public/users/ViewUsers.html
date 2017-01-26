@@ -40,9 +40,8 @@ and open the template in the editor.
                         <th>Delete</th>
                     </tr>
                     <tbody th:each="person : ${dataUsers}">
-
                         <tr  th:each="entry : ${person}" >
-                            <td
+                            <td value="id"
                                 th:text="${entry.id}"></td>
                             <td
                                 th:text="${entry.username}"></td>
@@ -52,7 +51,7 @@ and open the template in the editor.
                                 th:text="${entry.email}"></td>
                             <td>
                                 <button type="submit" 
-                                        formaction="user/update" 
+                                        formaction="/users/update" 
                                         name="Update" 
                                         value="Update"
                                         class="btn btn-primary">                
@@ -60,13 +59,14 @@ and open the template in the editor.
                                 </button>
                             </td>
                             <td>
-                                <button type="submit" 
-                                        formaction="user/delete" 
-                                        name="Delete" 
-                                        vaue="Delete"
-                                        class="btn btn-primary">                
-                                    Delete
-                                </button>
+                                <form method="POST" th:action="@{/users/delete(id=${entry.id})}">
+                                    <button type="submit" 
+                                            name="Delete" 
+                                            vaue="Delete"
+                                            class="btn btn-primary">                
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>

@@ -21,7 +21,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     private String username;
 
@@ -37,13 +45,6 @@ public class User {
         this.email=email;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

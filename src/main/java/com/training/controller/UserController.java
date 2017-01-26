@@ -65,19 +65,20 @@ public class UserController {
         model.addAttribute("dataUsers", data);
         return ("users/ViewUsers");
     }
-    @RequestMapping(value = "/users/update", method = RequestMethod.GET)
+    
+    @RequestMapping(value = "/users/update", method = RequestMethod.POST)
     public ModelAndView updateUser(
             @RequestParam(value="id")String id,
-            @RequestParam(value="id")String newUsername,
-            @RequestParam(value="id")String newPassword,
-            @RequestParam(value="id")String newEmail,
+            @RequestParam(value="username")String newUsername,
+            @RequestParam(value="password")String newPassword,
+            @RequestParam(value="email")String newEmail,
             Model model) {
         userService.update(id, newUsername, newPassword, newEmail);
         return new ModelAndView("redirect:/users/view");
     }
-    @RequestMapping(value = "/users/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/delete", method = RequestMethod.POST)
     public ModelAndView deleteUser(
-            @RequestParam(value="id")String id,
+            @RequestParam(value="id")Integer id,
             Model model) {
         userService.delete(id);
         return  new ModelAndView("redirect:/users/view");
