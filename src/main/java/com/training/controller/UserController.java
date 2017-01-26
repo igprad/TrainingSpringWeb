@@ -66,13 +66,20 @@ public class UserController {
         return ("users/ViewUsers");
     }
     @RequestMapping(value = "/users/update", method = RequestMethod.GET)
-    public ModelAndView updateUser(Model model) {
-        
+    public ModelAndView updateUser(
+            @RequestParam(value="id")String id,
+            @RequestParam(value="id")String newUsername,
+            @RequestParam(value="id")String newPassword,
+            @RequestParam(value="id")String newEmail,
+            Model model) {
+        userService.update(id, newUsername, newPassword, newEmail);
         return new ModelAndView("redirect:/users/view");
     }
     @RequestMapping(value = "/users/delete", method = RequestMethod.GET)
-    public ModelAndView deleteUser(Model model) {
-
+    public ModelAndView deleteUser(
+            @RequestParam(value="id")String id,
+            Model model) {
+        userService.delete(id);
         return  new ModelAndView("redirect:/users/view");
     }
     
