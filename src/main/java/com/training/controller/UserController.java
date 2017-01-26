@@ -9,14 +9,12 @@ import com.training.model.User;
 import com.training.services.UserServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -29,6 +27,12 @@ public class UserController {
     @Autowired
     UserServices userService;
 
+    @RequestMapping(value = "/users/add", method = RequestMethod.GET)
+    public String goToAddUser(
+    ) {
+        return "users/AddUser";
+    }
+    
     @RequestMapping(value = "/add/input", method = RequestMethod.POST)
     public ModelAndView addUser(
             //            @RequestParam(value="username") String username,
@@ -59,6 +63,18 @@ public class UserController {
     public String getUsers(Model model) {
         List<User> data = userService.seeAllUsers();
         model.addAttribute("dataUsers", data);
-        return "users/ViewUsers";
+        return ("users/ViewUsers");
     }
+    @RequestMapping(value = "/users/update", method = RequestMethod.GET)
+    public ModelAndView updateUser(Model model) {
+
+        return new ModelAndView("redirect:/users/view");
+    }
+    @RequestMapping(value = "/users/delete", method = RequestMethod.GET)
+    public ModelAndView deleteUser(Model model) {
+
+        return  new ModelAndView("redirect:/users/view");
+    }
+    
+    
 }

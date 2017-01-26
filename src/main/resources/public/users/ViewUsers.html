@@ -36,6 +36,8 @@ and open the template in the editor.
                         <th>Username</th>
                         <th>Password</th>
                         <th>Email</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                     <tbody th:each="person : ${dataUsers}">
 
@@ -48,6 +50,24 @@ and open the template in the editor.
                                 th:text="${entry.password}"></td>
                             <td
                                 th:text="${entry.email}"></td>
+                            <td>
+                                <button type="submit" 
+                                        formaction="user/update" 
+                                        name="Update" 
+                                        value="Update"
+                                        class="btn btn-primary">                
+                                    Update
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" 
+                                        formaction="user/delete" 
+                                        name="Delete" 
+                                        vaue="Delete"
+                                        class="btn btn-primary">                
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -55,16 +75,6 @@ and open the template in the editor.
                 <div class="col-sm-1">
                     <form action="/users/add" method="GET">
                         <input type="submit" value="Create" class="btn btn-primary"/>
-                    </form>
-                </div>
-                <div class="col-sm-1">
-                    <form action="/users/update" method="GET">
-                        <input type="submit" value="Update" class="btn btn-primary"/>
-                    </form>
-                </div>
-                <div class="col-sm-1">
-                    <form action="/users/delete" method="GET">
-                        <input type="submit" value="Delete" class="btn btn-primary"/>
                     </form>
                 </div>
             </div>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -42,11 +43,7 @@ public class IndexController {
         return "users/index";
     }
     
-    @RequestMapping(value = "/users/add", method = RequestMethod.GET)
-    public String inputName(
-    ) {
-        return "users/add";
-    }
+
       
     
 }
