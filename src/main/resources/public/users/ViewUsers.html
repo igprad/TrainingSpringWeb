@@ -50,13 +50,14 @@ and open the template in the editor.
                             <td
                                 th:text="${entry.email}"></td>
                             <td>
-                                <button type="submit" 
-                                        formaction="/users/update" 
-                                        name="Update" 
-                                        value="Update"
-                                        class="btn btn-primary">                
-                                    Update
-                                </button>
+                                <form method="POST" th:action="@{/users/updateUser(id=${entry.id})}">
+                                    <button type="submit"  
+                                            name="Update" 
+                                            value="Update"
+                                            class="btn btn-primary">                
+                                        Update
+                                    </button>
+                                </form>
                             </td>
                             <td>
                                 <form method="POST" th:action="@{/users/delete(id=${entry.id})}">

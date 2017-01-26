@@ -8,8 +8,10 @@ package com.training.repository;
 import com.training.model.User;
 import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -22,13 +24,15 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
             @Param("password")String password
     );
     
+    @Transactional
+    @Modifying
     @Query("UPDATE User u"
             + " set u.username= :username,"
             + " u.password= :password,"
             + " u.email= :email "
             + " where u.id = :id")
     public void updateUserByID(
-            @Param("id")String id,
+            @Param("id")Integer id,
             @Param("username")String username,
             @Param("password")String password,
             @Param("email")String email

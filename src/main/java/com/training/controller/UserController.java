@@ -66,9 +66,20 @@ public class UserController {
         return ("users/ViewUsers");
     }
     
+    @RequestMapping(value="/users/updateUser" ,method=RequestMethod.POST)
+    public String getUpdatePage( 
+            @RequestParam(value="id")Integer id,
+//            @RequestParam(value="username")String newUsername,
+//            @RequestParam(value="password")String newPassword,
+//            @RequestParam(value="email")String newEmail,
+            Model model){
+        model.addAttribute("id",id);
+        return "users/UpdateUser";
+    }
+    
     @RequestMapping(value = "/users/update", method = RequestMethod.POST)
     public ModelAndView updateUser(
-            @RequestParam(value="id")String id,
+            @RequestParam(value="id")Integer id,
             @RequestParam(value="username")String newUsername,
             @RequestParam(value="password")String newPassword,
             @RequestParam(value="email")String newEmail,

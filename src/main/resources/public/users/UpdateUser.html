@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Add New User</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h2>Update user </h2>
+                <form th:action="@{/users/update(id=${id})}" th:method="POST">
+                    Masukkan Username   : <input type="text" name="username"/><br/><br/>
+                    Masukkan Password      : <input type="text" name="password"/><br/><br/>
+                    Masukkan Email      : <input type="text" name="email"/><br/><br/>
+                    <input type="submit" value="Ubah" class="btn btn-warning"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
