@@ -26,10 +26,19 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/input", method = RequestMethod.POST)
-    public String inputName(
+    public String inputNamePost(
             @RequestParam(value = "data") String data, Model model
     ) {
         model.addAttribute("message", data);
+        return "users/index";
+    }
+    
+    @RequestMapping(value = "/input", method = RequestMethod.GET)
+    public String inputNameGet(
+            @RequestParam(value = "data") String data, Model model
+    ) {
+        model.addAttribute("message", data
+                +" lihat url, data dipasringkan dan terlihat karena method GET");
         return "users/index";
     }
     

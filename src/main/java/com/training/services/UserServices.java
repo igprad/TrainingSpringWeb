@@ -9,11 +9,13 @@ import com.training.model.User;
 import com.training.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author ALz
  */
+@Service
 public class UserServices{
     
     @Autowired
