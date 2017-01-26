@@ -25,7 +25,9 @@ public class UserServices{
         userRepository.save(model);
     }
     
-    public void update(){}
+    public void update(String id, String username, String password,String email){
+        userRepository.updateUserByID(id, username, password, email);
+    }
     public void delete(){}
     
     public boolean authLogin(String username,String password){

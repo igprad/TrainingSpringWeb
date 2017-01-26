@@ -67,7 +67,7 @@ public class UserController {
     }
     @RequestMapping(value = "/users/update", method = RequestMethod.GET)
     public ModelAndView updateUser(Model model) {
-
+        
         return new ModelAndView("redirect:/users/view");
     }
     @RequestMapping(value = "/users/delete", method = RequestMethod.GET)
