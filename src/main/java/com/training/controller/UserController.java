@@ -53,8 +53,10 @@ public class UserController {
         Boolean auth = userService.authLogin(username, password);
         if (auth) {
             model.addAttribute("Message", "Login Berhasil");
+            model.addAttribute("Color", "green");
         } else {
             model.addAttribute("Message", "Login Gagal");
+            model.addAttribute("Color", "red");
         }
         return "users/LoginAuth";
     }
@@ -79,9 +81,6 @@ public class UserController {
     @RequestMapping(value="/users/updateUser" ,method=RequestMethod.POST)
     public String getUpdatePage( 
             @RequestParam(value="id")Integer id,
-//            @RequestParam(value="username")String newUsername,
-//            @RequestParam(value="password")String newPassword,
-//            @RequestParam(value="email")String newEmail,
             Model model){
         model.addAttribute("id",id);
         return "users/UpdateUser";

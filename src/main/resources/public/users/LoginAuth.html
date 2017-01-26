@@ -17,7 +17,7 @@ and open the template in the editor.
                 <h2>This is Users Auth for login</h2>
                 <br/>
                 <br/>
-                <p th:text="${Message}"/>
+                <p th:object="${Color}" th:text="${Message}"/>
                  <form action="/index">
                     <input type="submit" value="Back"/>
                 </form>
