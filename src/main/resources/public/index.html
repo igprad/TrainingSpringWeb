@@ -11,16 +11,16 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
-    <body>
-        <div class="jumbotron">
-            <div class="container text-center" style="height: 550px;">
-                <div class="col-xs-12">
-                    <h2 >This is Homepage - Training Spring Web</h2>
-                    <br/>
-                    <br/>
+    <body class="jumbotron" style="height:720px;">
+        <div class="jumbotron" style="margin-top:-84px; margin-bottom: -100px;">
+            <div class="container text-center" >
+                <div class="col-xs-12 well well-sm">
+                    <h1>SpringBootWeb</h1>
+                    <h2>Practice for HTML x Spring Boot x PostgreSQL</h2>
                 </div>
-                <div class="col-xs-4">
-                    <h3>This is for testing paramater</h3>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                <div class="col-xs-4 well well-lg">
+                    <h3>This is for testing paramater POST</h3>
                     <br/>
                     <div>
                         Please insert your name :
@@ -31,9 +31,19 @@ and open the template in the editor.
                     </div>
                     <br/>
                     <br/>
+                    <h3>This is for testing paramater GET</h3>
+                    <br/>
+                    <div>
+                        Please insert your name :
+                        <form action="/input" method="GET">
+                            <input type="text" name="data"/>
+                            <input type="submit" class="btn btn-primary"/>
+                        </form>
+                    </div>
+                    <br/>
+                    <br/>
                 </div>
-
-                <div class="col-xs-4">
+                <div class="col-xs-4 well well-lg">
                     <h3>This for testing CRUD</h3>
                     <br/>
                     <table  width="200" style="margin-left:auto;margin-right:auto">
@@ -41,13 +51,13 @@ and open the template in the editor.
                             <td class="btn btn-primary">
                                 <a href="/users/view" style="color:white" >View Users</a></td>
                         </tr>
-                        
+
                     </table>
                     <br/>
                     <br/>
                 </div>
 
-                <div class="col-xs-4">
+                <div class="col-xs-4 well well-lg">
                     <h3>This is for test Login</h3>
                     <form action="/users/login" method="POST"><br/>
                         Username :
@@ -56,6 +66,12 @@ and open the template in the editor.
                         <input type="text" name="password"/><br/><br/>
                         <input class="btn btn-primary" type="submit"/>
                     </form>
+                </div>
+
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                <div class="footer">
+                    <h5>Ignatius Aldi Pradana - 2017</h5>
+                    <h5><a href="https://github.com/igprad">Github</a></h5>
                 </div>
             </div>
         </div>
