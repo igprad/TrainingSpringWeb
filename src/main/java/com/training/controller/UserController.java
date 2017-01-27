@@ -9,6 +9,7 @@ import com.training.model.User;
 import com.training.services.UserServices;
 import com.training.validator.UserFormValidator;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,34 +21,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  *
  * @author ALz
  */
 @Controller
-public class UserController{
+public class UserController extends WebMvcConfigurerAdapter{
     
     @Autowired
     UserServices userService;
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/users/view").setViewName("users/ViewUsers");
+    }
+    
     @RequestMapping(value = "/users/add", method = RequestMethod.GET)
     public String goToAddUser(
     ) {
         return "users/AddUser";
     }
     
-    @RequestMapping(value = "/add/input", method = RequestMethod.POST)
+    @PostMapping("/add/input")
     public String addUser(
-            @Valid UserFormValidator userForm,
+            @Valid @ModelAttribute("userForm") UserFormValidator userForm,
             BindingResult bindingResult,
             //            @RequestParam(value="username") String username,
             //            @RequestParam(value="password") String password,
             //            @RequestParam(value="email") String email,
+            HttpServletRequest request,
             @ModelAttribute User user,
             Model model) {
 //        userRepository.save(new User(username,password,email));
-            model.addAttribute("userForm",userForm);
+        
         if(bindingResult.hasErrors()){
             return ("users/AddUser");
         }
