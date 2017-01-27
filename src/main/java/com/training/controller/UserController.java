@@ -7,11 +7,15 @@ package com.training.controller;
 
 import com.training.model.User;
 import com.training.services.UserServices;
+import com.training.validator.UserFormValidator;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,17 +39,22 @@ public class UserController {
     
     @RequestMapping(value = "/add/input", method = RequestMethod.POST)
     public ModelAndView addUser(
+            @Valid UserFormValidator userForm,
+            BindingResult bindingResult,
             //            @RequestParam(value="username") String username,
             //            @RequestParam(value="password") String password,
             //            @RequestParam(value="email") String email,
             @ModelAttribute User user,
             Model model) {
 //        userRepository.save(new User(username,password,email));
+        if(bindingResult.hasErrors()){
+            return new ModelAndView("users/AddUser");
+        }
         userService.insert(user);
         return new ModelAndView("redirect:/users/view");
     }
 
-    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
+    @PostMapping("/users/login")
     public String login(
             @RequestParam(value = "username") String username,
             @RequestParam(value = "password") String password,
