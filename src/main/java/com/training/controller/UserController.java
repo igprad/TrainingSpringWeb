@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author ALz
  */
 @Controller
-public class UserController {
+public class UserController{
     
     @Autowired
     UserServices userService;
@@ -38,7 +38,7 @@ public class UserController {
     }
     
     @RequestMapping(value = "/add/input", method = RequestMethod.POST)
-    public ModelAndView addUser(
+    public String addUser(
             @Valid UserFormValidator userForm,
             BindingResult bindingResult,
             //            @RequestParam(value="username") String username,
@@ -47,11 +47,12 @@ public class UserController {
             @ModelAttribute User user,
             Model model) {
 //        userRepository.save(new User(username,password,email));
+            model.addAttribute("userForm",userForm);
         if(bindingResult.hasErrors()){
-            return new ModelAndView("users/AddUser");
+            return ("users/AddUser");
         }
         userService.insert(user);
-        return new ModelAndView("redirect:/users/view");
+        return ("redirect:/users/view");
     }
 
     @PostMapping("/users/login")
