@@ -19,7 +19,7 @@ and open the template in the editor.
                     
                     Masukkan Username   : 
                     <input type="text" name="username"/>
-                    
+                    <div th:if="${param.error}">Invalid Username or password</div>
                     <br/><br/>
                     
                     Masukkan Password      : 
