@@ -49,7 +49,8 @@ and open the template in the editor.
                             <td
                                 th:text="${entry.email}"></td>
                             <td>
-                                <form method="POST" th:action="@{/users/updateUser(id=${entry.id})}">
+                                <form method="POST" th:action="
+                                      @{/users/updateUser(id=${entry.id},username=${entry.username},email=${entry.email})}">
                                     <button type="submit"  
                                             name="Update" 
                                             value="Update"

@@ -90,8 +90,12 @@ public class UserController extends WebMvcConfigurerAdapter {
   }
 
   @RequestMapping(value = "/users/updateUser", method = RequestMethod.POST)
-  public String getUpdatePage(@RequestParam(value = "id") Integer id, Model model) {
+  public String getUpdatePage(@RequestParam(value = "id") Integer id,
+      @RequestParam(value = "") String username, @RequestParam(value = "") String email,
+      Model model) {
     model.addAttribute("id", id);
+    model.addAttribute("username", username);
+    model.addAttribute("email", email);
     return "users/UpdateUser";
   }
 
