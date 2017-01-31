@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this license header, choose License Headers in Project Properties. To change this
+ * template file, choose Tools | Templates and open the template in the editor.
  */
 package com.training.repository;
 
@@ -18,39 +17,22 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author ALz
  */
-public interface UserRepository extends JpaRepository<User, Serializable>{
-    @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username) and u.password = :password")
-    public User authLogin(
-            @Param("username")String username,
-            @Param("password")String password
-    );
-    
-//    @Query(value="SELECT u FROM User u WHERE "
-//            + "u.id::TEXT LIKE '%:keyword%' or "
-//            + "u.username::TEXT LIKE '%:keyword%' or "
-//            + "u.password::TEXT LIKE '%:keyword%' or "
-//            + "u.email::TEXT LIKE '%:keyword%' ",nativeQuery = true)
-//    public List<User> searchByKeyword(@Param("keyword")String keyword);
-    
-    public List<User> 
-        findByUsernameOrPasswordOrEmailContaining(String keyword,String keyword2,String keyword3);
-    
-    public List<User>
-        findAllByOrderByIdDesc();
-        
-    @Transactional
-    @Modifying
-    @Query("UPDATE User u"
-            + " set u.username= :username,"
-            + " u.password= :password,"
-            + " u.email= :email "
-            + " where u.id = :id")
-    public void updateUserByID(
-            @Param("id")Integer id,
-            @Param("username")String username,
-            @Param("password")String password,
-            @Param("email")String email
-    );
-    
-    
+public interface UserRepository extends JpaRepository<User, Serializable> {
+
+  @Query("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:username) and u.password = :password")
+  public User authLogin(@Param("username") String username, @Param("password") String password);
+
+  public List<User> findByUsernameOrPasswordOrEmailContaining(String keyword, String keyword2,
+      String keyword3);
+
+  public List<User> findAllByOrderByIdDesc();
+
+  @Transactional // digunakan untuk mengatasi masalah error yaitu dengan support rollback
+  @Modifying // Indicates a method should be regarded as modifying query.
+  @Query("UPDATE User u" + " set u.username= :username," + " u.password= :password,"
+      + " u.email= :email " + " where u.id = :id")
+  public void updateUserByID(@Param("id") Integer id, @Param("username") String username,
+      @Param("password") String password, @Param("email") String email);
+
+
 }
