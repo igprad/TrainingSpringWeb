@@ -8,7 +8,6 @@ import com.training.model.User;
 import com.training.services.UserServices;
 import com.training.validator.UserFormValidator;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,12 +44,7 @@ public class UserController extends WebMvcConfigurerAdapter {
 
   @PostMapping("/add/input")
   public String addUser(@Valid @ModelAttribute("userForm") UserFormValidator userForm,
-      BindingResult bindingResult,
-      // @RequestParam(value="username") String username,
-      // @RequestParam(value="password") String password,
-      // @RequestParam(value="email") String email,
-      HttpServletRequest request, @ModelAttribute User user, Model model) {
-    // userRepository.save(new User(username,password,email));
+      BindingResult bindingResult, @ModelAttribute User user, Model model) {
 
     if (bindingResult.hasErrors()) {
       return ("users/AddUser");
@@ -100,12 +94,18 @@ public class UserController extends WebMvcConfigurerAdapter {
   }
 
   @RequestMapping(value = "/users/update", method = RequestMethod.POST)
-  public ModelAndView updateUser(@RequestParam(value = "id") Integer id,
+  public String updateUser(@RequestParam(value = "id") Integer id,
       @RequestParam(value = "username") String newUsername,
       @RequestParam(value = "password") String newPassword,
-      @RequestParam(value = "email") String newEmail, Model model) {
-    userService.update(id, newUsername, newPassword, newEmail);
-    return new ModelAndView("redirect:/users/view");
+      @RequestParam(value = "email") String newEmail,
+      @Valid @ModelAttribute("userForm") UserFormValidator userForm, BindingResult bind,
+      Model model) {
+    if (bind.hasErrors()) {
+      // model.addAttribute("messageUpdate", "Please fill the correct form in update");
+      return ("redirect:/users/view");
+    } else
+      userService.update(id, newUsername, newPassword, newEmail);
+    return ("redirect:/users/view");
   }
 
   @RequestMapping(value = "/users/delete", method = RequestMethod.POST)

@@ -6,20 +6,26 @@ and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Add New User</title>
+        <title>Update User</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     </head>
-    <body>
+    <body class="jumbotron">
         <div class="jumbotron">
-            <div class="container text-center">
+            <div class="well well-sm container text-center">
                 <h2>Update user </h2>
+                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
                 <form th:action="@{/users/update(id=${id})}" th:method="POST">
                     Masukkan Username   : <input type="text" name="username" th:value="${username}"/><br/><br/>
                     Masukkan Password      : <input type="text" name="password"/><br/><br/>
                     Masukkan Email      : <input type="text" name="email" th:value="${email}"/><br/><br/>
-                    <input type="submit" value="Ubah" class="btn btn-warning"/>
+                    <input type="submit" value="Ubah" class="btn btn-primary"/>
+                </form>
+            </div>
+            <div class="col-sm-3 text-center" style="margin-left:-39px;">
+                <form action="/users/view">
+                    <input class="btn btn-warning" type="submit" value="Back"/>
                 </form>
             </div>
         </div>
